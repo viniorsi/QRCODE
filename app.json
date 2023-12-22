@@ -1,0 +1,51 @@
+{
+  "expo": {
+    "name": "consultaqrcode",
+    "slug": "consultaqrcode",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/MetroIcon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./src/assets/MetroIcon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access camera.",
+        "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "android.permission.CAMERA"
+      ],
+      "package": "com.autopass.qrcodeconsulta.app"
+    },
+    "web": {
+      "favicon": "./src/assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-barcode-scanner",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access camera."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "2a5e356f-e17d-4bfa-91a4-4240596c468a"
+      }
+    }
+  }
+}
