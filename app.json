@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "consultaqrcode",
+    "name": "Consulta QRCODE",
     "slug": "consultaqrcode",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/MetroIcon.png",
+    "icon": "./src/assets/qrcodeAPP.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./src/assets/MetroIcon.png",
+      "image": "./src/assets/qrcodeAPP.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,7 +19,8 @@
       "infoPlist": {
         "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access camera.",
         "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone"
-      }
+      },
+      "bundleIdentifier": "com.autopass.qrcodeconsulta.app"
     },
     "android": {
       "adaptiveIcon": {

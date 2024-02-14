@@ -40,7 +40,7 @@ const Home = () => {
                 </VStack>
             </VStack>
             <Box py="6" safeAreaBottom justifyContent="center" alignItems="center">
-                <Text>VERSÃO 1.0.0</Text>
+                <Text>VERSÃO 2.0.0</Text>
             </Box>
         </Box>
     )
