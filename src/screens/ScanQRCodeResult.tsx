@@ -78,7 +78,7 @@ const ScanQRCodeResult = () => {
 
 
 
-    // const dataFormatada = format(new Date(cd.data_de_emissao), 'dd/MM/yyyy');
+   
     return (
         <Box flex={1}>
             <Center flex="1">
@@ -106,7 +106,7 @@ const ScanQRCodeResult = () => {
 
                             <Box alignItems={"center"}>
                                 <Text  >Data Da Compra</Text>
-                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.data_de_emissao), 'dd/MM/yyyy')}</Text>
+                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.data_de_emissao), 'dd/MM/yyyy HH:MM')}</Text>
                                 {/* <Text fontSize={17} fontWeight={'bold'} >{cd.qrcodedateusestr}</Text> */}
                             </Box>
 
@@ -137,7 +137,7 @@ const ScanQRCodeResult = () => {
                             <Box alignItems={"center"}>
                                 <Text  >Valor</Text>
                                 <Text fontSize={17} fontWeight={'bold'} >{"R$ "+(cd.valor/100).toFixed(2).replace('.',',')}</Text>
-                                {/* <Text fontSize={17} fontWeight={'bold'}>4,40</Text> */}
+                            
                             </Box>
 
                             <Box alignItems={"center"}>
@@ -148,7 +148,7 @@ const ScanQRCodeResult = () => {
 
                             <Box alignItems={"center"}>
                                 <Text  >Data Da Compra</Text>
-                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.data_de_emissao), 'dd/MM/yyyy')}</Text>
+                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.data_de_emissao), 'dd/MM/yyyy HH:MM')}</Text>
                                 {/* <Text fontSize={17} fontWeight={'bold'} >{cd.qrcodedateusestr}</Text> */}
                             </Box>
 
@@ -164,7 +164,7 @@ const ScanQRCodeResult = () => {
 
                             <Box alignItems={"center"}>
                                 <Text  >Data de uso</Text>
-                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.qrcodedateusestr), 'dd/MM/yyyy')}</Text>
+                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.qrcodedateusestr), 'dd/MM/yyyy HH:MM')}</Text>
                             </Box>
                             <Button
                                 height={"7%"}
@@ -197,7 +197,7 @@ const ScanQRCodeResult = () => {
 
                             <Box alignItems={"center"}>
                                 <Text  >Data Da Compra</Text>
-                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.data_de_emissao), 'dd/MM/yyyy')}</Text>
+                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.data_de_emissao), 'dd/MM/yyyy HH:MM')}</Text>
                                 {/* <Text fontSize={17} fontWeight={'bold'} >{cd.qrcodedateusestr}</Text> */}
                             </Box>
 
@@ -233,13 +233,13 @@ const ScanQRCodeResult = () => {
                             <Box alignItems={"center"}>
                                 <Text  >Data Da Compra</Text>
                                 {/* <Text  >{cd.data_de_emissao}</Text> */}
-                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.qrcodedateusestr), 'dd/MM/yyyy')}</Text>
+                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.qrcodedateusestr), 'dd/MM/yyyy HH:MM')}</Text>
                             </Box>
 
                             <Box alignItems={"center"}>
                                 <Text  >Data de cancelamento</Text>
                                 {/* <Text  >{cd.data_de_emissao}</Text> */}
-                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.qrcodedatecancellationstr), 'dd/MM/yyyy')}</Text>
+                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.qrcodedatecancellationstr), 'dd/MM/yyyy HH:MM')}</Text>
                             </Box>
 
                             <Button

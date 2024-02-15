@@ -2,12 +2,12 @@
   "expo": {
     "name": "Consulta QRCODE",
     "slug": "consultaqrcode",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/qrcodeAPP.png",
+    "icon": "./src/assets/IconQRCode.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./src/assets/qrcodeAPP.png",
+      "image": "./src/assets/MetroIcon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -24,7 +24,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/adaptive-icon.png",
+        "foregroundImage": "./src/assets/IconQRCode.png",
         "backgroundColor": "#ffffff"
       },
       "permissions": [
