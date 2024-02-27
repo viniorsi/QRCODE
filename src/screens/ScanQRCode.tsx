@@ -5,7 +5,7 @@ import { BarCodeScanner, BarCodeScannerResult, PermissionStatus } from 'expo-bar
 import { Ionicons } from '@expo/vector-icons'
 import { StatusBar } from 'expo-status-bar';
 import { Camera, FlashMode } from 'expo-camera';
-import { useNavigation, useRoute , } from "@react-navigation/native";
+import { useFocusEffect, useIsFocused, useNavigation, useRoute , } from "@react-navigation/native";
 
 
 
@@ -14,6 +14,7 @@ import { useNavigation, useRoute , } from "@react-navigation/native";
 const ScanQRCode = () => {
 
   const navigation = useNavigation();
+  const focus = useIsFocused();
   const route = useRoute();
 
   const [scanned, setScanned] = useState(false);
@@ -61,13 +62,15 @@ const ScanQRCode = () => {
 
 
   useEffect(() => {
-   
+    
+    console.log("userEffect");
 
     (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
       setHasStatusPermission(status === 'granted');
     })();
   }, []);
+  console.log("[Permission] -> ${hasStatusPermission}");
 
   if (hasStatusPermission === null) {
     return
@@ -95,14 +98,17 @@ const ScanQRCode = () => {
   
   return (
     <Box flex={1} justifyContent={'center'}>
-      <Camera style={{ flex: 1 }}
+      {focus &&(
+        <Camera style={{ flex: 1 }}
         onBarCodeScanned={ scanned ? undefined : handleBarCodeScanned}
         // {scanned && <Button title={'Aperte para escanear novamente'} onPress={() => setScanned(false)} />}
         flashMode={flashMode}
         ratio='16:9'
       >
+        </Camera>
+      )}
+      
 
-      </Camera>
       <Ionicons
         style={styles.back}
         name="arrow-back"

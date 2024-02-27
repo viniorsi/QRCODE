@@ -21,6 +21,7 @@ interface Objeto {
     station_buy: String,
     data_de_emissao: any,
     qrcodedatecancellationstr : any
+    reimpresso : any
 }
 
 
@@ -42,16 +43,18 @@ const ScanQRCodeResult = () => {
 
 
     const consultar = useCallback(async (qrcode: string) => {
-        console.log('render')
+        
         try {
-
+            
             // local
-            //   const response = await axios.get(`https:/192.168.88.123/:9092/tickets/qrcodeid/${qrcode}`);
+            //   const response = await axios.get(`http://192.168.88.64:9092/tickets/qrcodeid/${qrcode}`);
+              
             // hml
             // const response = await axios.get(`https://arquiteturaadmin-prd.autopasscorp.com/consulta-ticket-metro/tickets/qrcodeid/${qrcode}`);
             // prd
              const response = await axios.get(`https://arquiteturaadmin-prd.autopasscorp.com/consulta-ticket-metro/tickets/qrcodeid/${qrcode}`);
             // Extrai os dados da resposta da API
+            console.log('render')
             setObjeto(response.data)
             console.log(response.data)
 
@@ -64,6 +67,20 @@ const ScanQRCodeResult = () => {
 
     }, []);
 
+        
+
+    function formateDate(date: any): string {
+        let dateFormat: string = '';
+        try {
+          //formata a data e atribui para a variavel
+          dateFormat = format(new Date(date), 'dd/MM/yyyy HH:mm');
+        }
+        catch {
+          dateFormat = date;
+        }
+        return dateFormat;
+      }
+
 
     useEffect(() => {
 
@@ -75,10 +92,8 @@ const ScanQRCodeResult = () => {
     }, [qrcode, consultar]);
 
    
-
-
-
-   
+  
+     
     return (
         <Box flex={1}>
             <Center flex="1">
@@ -106,9 +121,21 @@ const ScanQRCodeResult = () => {
 
                             <Box alignItems={"center"}>
                                 <Text  >Data Da Compra</Text>
-                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.data_de_emissao), 'dd/MM/yyyy HH:MM')}</Text>
-                                {/* <Text fontSize={17} fontWeight={'bold'} >{cd.qrcodedateusestr}</Text> */}
+                                
+                                <Text fontSize={17} fontWeight={'bold'} >{formateDate(cd.data_de_emissao)}</Text>
+                               
                             </Box>
+                            {cd.reimpresso === 'IMPRESSO' && (
+                                                            <Box alignItems={"center"}>
+                                                            <Text  fontSize={17} fontWeight={'bold'} >IMPRESSO</Text>
+                                                        </Box>
+                             )}
+                            {cd.reimpresso != "IMPRESSO" && (
+                                 <Box alignItems={"center"}>
+                                <Text fontSize={17} fontWeight={'bold'} >REIMPRESSO</Text>
+                            </Box>
+                            )}
+                           
 
                             <Button
                                 height={"7%"}
@@ -143,13 +170,13 @@ const ScanQRCodeResult = () => {
                             <Box alignItems={"center"}>
                                 <Text  >Local Da Compra</Text>
                                 <Text fontSize={17} fontWeight={'bold'} >{cd.station_buy}</Text>
-                                {/* <Text fontSize={17} fontWeight={'bold'}>App</Text> */}
+                        
                             </Box>
 
                             <Box alignItems={"center"}>
                                 <Text  >Data Da Compra</Text>
-                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.data_de_emissao), 'dd/MM/yyyy HH:MM')}</Text>
-                                {/* <Text fontSize={17} fontWeight={'bold'} >{cd.qrcodedateusestr}</Text> */}
+                                <Text fontSize={17} fontWeight={'bold'} >{formateDate(cd.data_de_emissao)}</Text>
+                                
                             </Box>
 
                             <Box alignItems={"center"}>
@@ -164,8 +191,18 @@ const ScanQRCodeResult = () => {
 
                             <Box alignItems={"center"}>
                                 <Text  >Data de uso</Text>
-                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.qrcodedateusestr), 'dd/MM/yyyy HH:MM')}</Text>
+                                <Text fontSize={17} fontWeight={'bold'} >{formateDate(cd.qrcodedateusestr)}</Text>
                             </Box>
+                            {cd.reimpresso === 'IMPRESSO' && (
+                                                            <Box alignItems={"center"}>
+                                                            <Text  fontSize={17} fontWeight={'bold'} >IMPRESSO</Text>
+                                                        </Box>
+                             )}
+                            {cd.reimpresso != 'IMPRESSO' && (
+                                 <Box alignItems={"center"}>
+                                <Text fontSize={17} fontWeight={'bold'} >REIMPRESSO</Text>
+                            </Box>
+                            )}
                             <Button
                                 height={"7%"}
                                 width={"70%"}
@@ -197,8 +234,8 @@ const ScanQRCodeResult = () => {
 
                             <Box alignItems={"center"}>
                                 <Text  >Data Da Compra</Text>
-                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.data_de_emissao), 'dd/MM/yyyy HH:MM')}</Text>
-                                {/* <Text fontSize={17} fontWeight={'bold'} >{cd.qrcodedateusestr}</Text> */}
+                                <Text fontSize={17} fontWeight={'bold'} >{formateDate(cd.data_de_emissao)}</Text>
+                               
                             </Box>
 
                             <Button
@@ -233,13 +270,13 @@ const ScanQRCodeResult = () => {
                             <Box alignItems={"center"}>
                                 <Text  >Data Da Compra</Text>
                                 {/* <Text  >{cd.data_de_emissao}</Text> */}
-                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.qrcodedateusestr), 'dd/MM/yyyy HH:MM')}</Text>
+                                <Text fontSize={17} fontWeight={'bold'} >{formateDate(cd.qrcodedateusestr)}</Text>
                             </Box>
 
                             <Box alignItems={"center"}>
                                 <Text  >Data de cancelamento</Text>
                                 {/* <Text  >{cd.data_de_emissao}</Text> */}
-                                <Text fontSize={17} fontWeight={'bold'} >{format(new Date(cd.qrcodedatecancellationstr), 'dd/MM/yyyy HH:MM')}</Text>
+                                <Text fontSize={17} fontWeight={'bold'} >{formateDate(cd.qrcodedatecancellationstr)}</Text>
                             </Box>
 
                             <Button
