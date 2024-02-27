@@ -77,7 +77,7 @@ useEffect(() => {
              <TextInput safearea
                                keyboardType='numeric'
                                style={styles.input}
-                               placeholder="Digite o QRCode ID"
+                               placeholder="Digite o ID do QRCODE"
                                value={qrcodeId}
                               onChangeText={(text) => {
                                 setQrcodeId(text);
